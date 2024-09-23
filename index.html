@@ -39,26 +39,42 @@
       height: 100vh;
       position: relative;
     }
-    .loader{
-border: 16px solid #f3f3f3;
-border-radius: 50%;
-border-top: 16px solid #3498db;
-width: 120px;
-height: 120px;
-animation: spin 2s linear infinite;
+    .loader {
+      width: 86px;
+      height: 50px;
+      border-radius: 50px;
+      background:
+        radial-gradient(farthest-side,#0000 calc(100% - 10px),#FFF calc(100% - 10px) 100%,#0000) left,
+        radial-gradient(farthest-side,#0000 calc(100% - 10px),#FFF calc(100% - 10px) 100%,#0000) right;
+      background-size: calc(50% + 5px) 100%;
+      background-repeat: no-repeat;
+      position: relative;
+      animation: flipX 1s infinite linear;
+    }
+    .loader:before {
+      content: "";
+      position: absolute;
+      inset:0;
+      margin:auto;
+      width:10px;
+      height: 10px;
+      border-radius: 50%;
+      background:#FF3D00;
+      transform-origin: -14px 50%;
+      animation: rotate 0.5s infinite linear;
     }
 
-    @keyframes spin {
-      0%{
-        transform: rotate(0deg);
-      }
-      100%{
-        transform: rotate(360deg);
-      }
+    @keyframes flipX {
+        0%,49.99% { transform:scaleX(1)}
+        50%,100% { transform:scaleX(-1)}
+    }
+
+    @keyframes rotate {
+        100% { transform:rotate(360deg)}
     }
   </style>
 </head>
-<body>
+<body bgcolor="#FF3D00">
   <div class="container">
     <div class="loader"></div>
   </div>
